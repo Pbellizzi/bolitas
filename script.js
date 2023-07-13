@@ -33,10 +33,11 @@ const length = end.x - start.x
 
 const maxAngle = 2 * Math.PI
 const arcRadius = length * 0.05
-const distance =  Math.PI + (elapsedTime * 0.5)
+const distance =  Math.PI + (elapsedTime * 1)
 const modDistance = distance % maxAngle
 const adjustedDistance = modDistance >= Math.PI ? modDistance : maxAngle - modDistance
 
+/*Defines Circle Movement*/
 const x = center.x + arcRadius * Math.cos(adjustedDistance)
       y = center.y + arcRadius * Math.sin(adjustedDistance)
 
