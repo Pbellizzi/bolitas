@@ -138,7 +138,7 @@ const calculateNextImpactTime = (currentImpactTime, velocity) => {
 }
 */
 
-pen.lineWidth = 4;
+pen.lineWidth = 3;
 arcs.forEach((arc,index) => {
 
     const numberOfLoops = Math.max(arcs.length, 40) - index / 2 /*Number of loops determines the speed and modifying the index alters the variation between arcs*/
@@ -151,19 +151,21 @@ arcs.forEach((arc,index) => {
 
     const angle = Math.PI * 1.5
 /*Defines Circle Movement*/
-const x = center.x    + arcRadius  * Math.cos(adjustedDistance) 
-      y = center.y + arcRadius  * Math.sin(adjustedDistance) 
+const x = center.x  + arcRadius  * Math.cos(adjustedDistance) 
+      y = center.y /*center.arcY*/ + arcRadius  * Math.sin(adjustedDistance) 
 
       //if (index == 0 && (adjustedDistance < 3.16 ||	 adjustedDistance > 6.26 )) {playNote(1976, 'sine'); console.log("nota")   }
-      if (index == 0) {console.log(center.y, center.arcY,(paper.height / spacing) )}
-      // draw arc
+      //if (index == 0) {console.log(center.y, center.arcY,(paper.height / spacing) )}
+    // draw arc
     pen.beginPath();
+    pen.lineWidth = 4;
     pen.strokeStyle = arc
     pen.arc(center.x, center.y, arcRadius, Math.PI, Math.PI * 2);
     pen.stroke()
 
     // draw circle
     pen.beginPath();
+    pen.lineWidth = 3;
     pen.fillStyle = arc
     pen.strokeStyle = "white"
      /* I tried to make the cicles exactly half the spacing between arcs but they still collided with the others. I have to think this again*/ 
